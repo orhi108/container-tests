@@ -22,9 +22,9 @@ jobs:
       run: docker login docker.pkg.github.com -u $DOCKER_USER -p $DOCKER_PASSWORD
       
     - name: Retag the image
-      run: docker tag helloworld:v1 docker.pkg.github.com/fortum/container-heloworld-app/helloworld:v1
+      run: docker tag helloworld:v1 docker.pkg.github.com/orhi108/container-tests/helloworld:v1
       
     - name: Publish the image to github repo
-      run: docker push docker.pkg.github.com/fortum/container-heloworld-app/helloworld:v1
+      run: docker push docker.pkg.github.com/fortum/orhi108/container-tests/helloworld:v1
 
       
