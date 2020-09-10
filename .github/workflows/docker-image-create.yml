@@ -17,8 +17,8 @@ jobs:
       
     - name: Login to github repository
       env:
-        DOCKER_USER: ${{ secrets.GUTHUB_USER }} 
-        DOCKER_PASSWORD: ${{ secrets.GUTHUB_PASSWORD}} 
+        DOCKER_USER: ${{ secrets.GH_USERNAME }} 
+        DOCKER_PASSWORD: ${{ secrets.GH_PASSWORD}} 
       run: docker login docker.pkg.github.com -u $DOCKER_USER -p $DOCKER_PASSWORD
       
     - name: Retag the image
