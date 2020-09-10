@@ -19,7 +19,7 @@ jobs:
       env:
         DOCKER_USER: ${{ secrets.GUTHUB_USER }} 
         DOCKER_PASSWORD: ${{ secrets.GUTHUB_PASSWORD}} 
-      run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+      run: docker login docker.pkg.github.com -u $DOCKER_USER -p $DOCKER_PASSWORD
       
     - name: Retag the image
       run: docker tag helloworld:v1 docker.pkg.github.com/fortum/container-heloworld-app/helloworld:v1
