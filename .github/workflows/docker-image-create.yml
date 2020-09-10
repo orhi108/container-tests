@@ -1,0 +1,30 @@
+name: Docker Image Build CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag helloworld:v1
+      
+    - name: Login to github repository
+      env:
+        DOCKER_USER: ${{ secrets.GUTHUB_USER }} 
+        DOCKER_PASSWORD: ${{ secrets.GUTHUB_PASSWORD}} 
+      run: docker logint -u $DOCKER_USER -p $DOCKER_PASSWORD
+      
+    - name: Retag the image
+      run: docker tag helloworld:v1 docker.pkg.github.com/fortum/container-heloworld-app/helloworld:v1
+      
+    - name: Publish the image to github repo
+      run: docker push docker.pkg.github.com/fortum/container-heloworld-app/helloworld:v1
+
+      
